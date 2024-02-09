@@ -1,17 +1,23 @@
 
 
 
-const mysql = require('mysql');
+const e = require('express');
+const mysql = require('mysql2');
 
-const db = mysql.createPool({
+const db = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "nodecrud"
+    database: "nodecrud",
+    port: 3307
 });
 
-db.getConnection((err, connection) => {
+db.connect((err, connection) => {
 
+    if (err) {
+        console.log('Error connecting to the database'+err);
+        return;
+    }
     console.log('Connected to the database');
 });
 

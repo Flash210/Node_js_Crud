@@ -4,9 +4,9 @@ const app=express();
 
 const myDB=require('./config/db.js');
 
-const bodyParser=require('body-parser');
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended:true}));
+//const bodyParser=require('body-parser');
+app.use(express.json());
+app.use(express.urlencoded({extended:true}));
 
 
 const route=require('./router/router.js');
