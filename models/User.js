@@ -67,6 +67,56 @@ static async deleteUser(id){
 
 
 
-}}
+}
+
+
+static async updateUser(id,name,email,password){
+
+    return new Promise((resolve,reject)=>{
+
+        db.query('UPDATE user SET name=?,email=?,password=? WHERE id=?',[name,email,password,id],(err,rows)=>{
+
+            if(!err)
+
+            resolve(true);
+            else 
+            {
+                console.log("the error is "+err);
+                resolve(false);
+
+            }
+        });
+    });
+
+}
+
+
+
+/*
+static async edit(id,name,email,password){
+
+   return new Promise((resolve,reject)=>{
+          
+   db.query("update user set name=?,email=?,password=? where id=?",[name,email,password,id],(err,result) =>{
+
+           if (  !err){
+            resolve(result)
+           }
+
+    }
+           
+         
+    )
+
+
+
+
+
+});  */
+
+   
+}
+
+
 
 module.exports=UserModel;

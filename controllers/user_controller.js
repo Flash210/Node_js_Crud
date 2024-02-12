@@ -62,11 +62,20 @@ static async deleteUser(req,response){
 static async updateUser(req,response){
 
 const id = req.body.id;
-var name=req.body.name;
-var email=req.body.email;
-var password=req.body.password;
+var newName=req.body.name;
+var newEmail=req.body.email;
+var newPassword=req.body.password;
 
 
+  var x=  await userModel.updateUser(id,newName,newEmail,newPassword);
+
+  if ( x){
+    response.send("Data Edited Succesfull")
+  }else 
+  {
+    response.send("Fail To Data Edited ")
+
+  }
 
 }
 
